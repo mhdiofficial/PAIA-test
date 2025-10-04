@@ -17,8 +17,6 @@ dependencies = [
     "pydantic>=2.0",
     "pydantic-settings",
     "llama-index>=0.10.0",
-    "llama-index-llms-openai",
-    "llama-index-llms-gemini",
     "openai>=1.0.0",
     "google-generativeai",
     "python-dotenv",
