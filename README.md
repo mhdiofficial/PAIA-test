@@ -57,10 +57,6 @@ MAX_HISTORY_MESSAGES=25
 If you want to secure the API using keys, insert hashed keys into the database. You can generate a
 plain/hashed key pair via:
 
-> **Note:** When the stack runs via Docker Compose, services inside the network reach PostgreSQL at
-> `db:5432`. If you connect from your host machine (e.g., using `psql`), target
-> `localhost:5454` instead.
-
 ```bash
 python -c "from app.utils import generate_api_key; plain, hashed = generate_api_key('local'); print('plain:', plain); print('hashed:', hashed)"
 ```
@@ -83,7 +79,7 @@ docker compose up --build
 
 - FastAPI service: http://localhost:8000/docs
 - Streamlit UI: http://localhost:8501
-- PostgreSQL: exposed on host port 5454 with default credentials `postgres` / `postgres`.
+- PostgreSQL: exposed on port 5432 with default credentials `postgres` / `postgres`.
 
 ### Running Locally with Python
 
@@ -101,9 +97,6 @@ streamlit run streamlit_app.py
 ```
 
 Ensure PostgreSQL is running and reachable based on your `DATABASE_URL`.
-If you rely on the Compose-managed database while running the API natively, point the URL at
-`postgresql+asyncpg://postgres:postgres@localhost:5454/chatbot` so it can reach the remapped host
-port.
 
 ## Streamlit Client
 
